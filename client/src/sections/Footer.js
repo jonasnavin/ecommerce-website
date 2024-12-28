@@ -1,8 +1,11 @@
 import React from 'react'
+import DummyPage from '../pages/DummyPage'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div>
+      <DummyPage />
+    </div>
   )
 }
 

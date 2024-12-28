@@ -8,7 +8,7 @@ import ViewMobile from '../pages/ViewMobile'
 
 const Main = () => {
   return (
-    <main>
+    <main style={{width: "80%", margin: "auto"}}>
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/view-mobile/:id' element={<ViewMobile />} />

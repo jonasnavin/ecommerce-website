@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import DataContext from '../context/DataContext'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-    const { mobiles, loading, setLoading, setMobiles } = useContext(DataContext)
+    const { mobiles, loading, setLoading, setMobiles, setFormData } = useContext(DataContext)
 
     useEffect(() => {
         const fetchMobiles = async () => {
@@ -20,28 +21,30 @@ const Home = () => {
             }
         }
         fetchMobiles()
-    }, [setMobiles, setLoading])
+    }, [setMobiles, setLoading, setFormData])
+
+    const homeStyle = {
+        display: "flex",
+        // justifyContent: "center",
+        columnGap: "2rem",
+        flexWrap: "wrap"
+    }
 
     return (
-        <div style={{display: "flex", justifyContent: "center", columnGap: "2rem"}}>
+        <div style={homeStyle}>
             {!loading ? (
                 mobiles.map(mobile => (
                     <React.Fragment key={mobile._id}>
-                        <div>
+                        <div style={{width: "300px"}}>
                             <p>Brand: {mobile.brand}</p>
                             <p>Model: {mobile.model}</p>
-                            <img src={mobile.image} alt={mobile.model} width={"200px"} height={"220px"}/>
+                            {/* <img src={mobile.image} alt={mobile.model} width={"200px"} height={"220px"}/> */}
                             <p>Price: {mobile.price}</p>
                         </div>
                         <div>
-                            <h3>Specifications:</h3>
-                            <p>Dimensions: {mobile.specifications.dimensions}</p>
-                            <p>Ram: {mobile.specifications.ram}</p>
-                            <p>Storage: {mobile.specifications.rom}</p>
-                            <p>Processor: {mobile.specifications.processor}</p>
-                            <p>Weight: {mobile.specifications.weight}</p>
-                            <p>Battery Capacity: {mobile.specifications.batteryCapacity}</p>
-                            <p>Camera: {mobile.specifications.camera.rear} MP | {mobile.specifications.camera.selfie} MP</p>
+                            <p><Link to={`/view-mobile/${mobile._id}`}>View</Link></p>
+                            <p><Link to={`/edit-mobile/${mobile._id}`}>Edit</Link></p>
+                            <p><Link to={`/delete-mobile/${mobile._id}`}>Delete</Link></p>
                         </div>
                     </React.Fragment>
                 ))) : (

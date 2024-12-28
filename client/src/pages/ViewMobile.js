@@ -37,13 +37,13 @@ const ViewMobile = () => {
                     </div>
                     <div>
                         <h3>Specifications:</h3>
-                        <p>Dimensions: {mobile.specifications?.dimensions}</p>
-                        <p>Ram: {mobile.specifications?.ram}</p>
-                        <p>Storage: {mobile.specifications?.rom}</p>
-                        <p>Processor: {mobile.specifications?.processor}</p>
-                        <p>Weight: {mobile.specifications?.weight}</p>
-                        <p>Battery Capacity: {mobile.specifications?.batteryCapacity}</p>
-                        <p>Camera: {mobile.specifications?.camera.rear} MP | {mobile.specifications?.camera.selfie} MP</p>
+                        <p>Dimensions: {mobile.dimensions}</p>
+                        <p>Ram: {mobile.ram}</p>
+                        <p>Storage: {mobile.rom}</p>
+                        <p>Processor: {mobile.processor}</p>
+                        <p>Weight: {mobile.weight}</p>
+                        <p>Battery Capacity: {mobile.batteryCapacity}</p>
+                        {/* <p>Camera: {mobile.camera.rear} MP | {mobile.camera.selfie} MP</p> */}
                     </div>
                 </React.Fragment>
             ) : (

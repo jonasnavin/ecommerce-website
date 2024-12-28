@@ -10,26 +10,29 @@ const mobileSchema = mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
     },
     image: {
         type: String,
-        required: true,
-        unique: true
+        // required: true,
+        // unique: true
     },
-    specifications: {
-        dimensions: String,
-        batteryCapacity: Number,
-        camera: {
-            rear: Number,
-            selfie: Number
-        },
-        ram: Number,
-        rom: Number,
-        processor: String,
-        weight: Number
-    }
+    dimensions: String,
+    batteryCapacity: String,
+    rearCamera: String,
+    selfieCamera: String,
+    ram: String,
+    rom: String,
+    processor: String,
+    weight: String
+
 })
+
+mobileSchema.pre('save', function (next) {
+    this.weight = `${this.weight} grams`;
+    this.image = `http://localhost:5000/images/${this.image}.jpg`
+    next();
+});
 
 module.exports = mongoose.model("mobiles", mobileSchema)

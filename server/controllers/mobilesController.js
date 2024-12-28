@@ -1,6 +1,7 @@
 const mobiles = require('../models/mobilesSchema')
 
 const getAllMobiles = async (request, response) => {
+    console.log(request.method, request.url)
     const allMobiles = await mobiles.find()
     return response.status(200).json(allMobiles)
 }
@@ -24,7 +25,12 @@ const addNewMobile = async (request, response) => {
             model: request.body.model,
             price: request.body.price,
             image: request.body.image,
-            specifications: request.body.specifications
+            dimensions: request.body.dimensions,
+            batteryCapacity: request.body.batteryCapacity,
+            ram: request.body.ram,
+            rom: request.body.rom,
+            processor: request.body.processor,
+            weight: request.body.weight
         }
         const mobile = await mobiles.create(newMobile)
         return response.status(201).json(mobile)
@@ -42,7 +48,12 @@ const updateMobile = async (request, response) => {
             model: request.body.model,
             price: request.body.price,
             image: request.body.image,
-            specifications: request.body.specifications
+            dimensions: request.body.dimensions,
+            batteryCapacity: request.body.batteryCapacity,
+            ram: request.body.ram,
+            rom: request.body.rom,
+            processor: request.body.processor,
+            weight: request.body.weight
         }
         const mobile = await mobiles.findByIdAndUpdate(id, updatedMobile)
         return response.status(201).json(mobile)
