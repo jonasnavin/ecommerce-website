@@ -18,7 +18,7 @@ app.use(cors())
 app.use('/images', express.static(path.join(__dirname, 'public', 'img')))
 app.use('/', require('./routes/root'))
 app.use('/electronics/mobiles', require('./routes/api/mobileRoute'))
-app.use('/uploads', require('./routes/api/uploadRoutes'))
+app.use('/upload', require('./routes/api/uploadRoutes'))
 
 app.use(errorHandler)
 
