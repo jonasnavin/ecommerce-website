@@ -6,10 +6,23 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/')
+    const brandName = req.body.brandName
+    console.log(brandName)
+    // let folderPath = ""
+    // if (brandName.toLowerCase() === "realme") {
+    //   folderPath = "realme"
+    // }
+    // else if (brandName.toLowerCase() === "redmi") {
+    //   folderPath = "redmi"
+    // }
+    // else if (brandName.toLowerCase() === "samsung") {
+    //   folderPath = "samsung"
+    // }
+    cb(null, `public/img`)
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+    const fileName = req.body.fileName + path.extname(file.originalname)
+    cb(null, fileName)
   }
 });
 
@@ -25,7 +38,7 @@ router.post('/', upload.single('file'), (req, res) => {
   });
 });
 
-const uploadDir = './uploads';
+const uploadDir = './public/img';
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }

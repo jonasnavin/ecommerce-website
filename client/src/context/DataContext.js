@@ -19,6 +19,13 @@ export const DataProvider = ({ children }) => {
         image: ""
     })
 
+    const [file, setFile] = useState(null)
+
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
+    }
+
     return (
         <DataContext.Provider value={{
             mobiles,
@@ -26,7 +33,9 @@ export const DataProvider = ({ children }) => {
             setLoading,
             setMobiles,
             formData,
-            setFormData
+            setFormData,
+            handleFileChange,
+            file
         }}>
             {children}
         </DataContext.Provider>
