@@ -23,14 +23,16 @@ const addNewMobile = async (request, response) => {
         const newMobile = {
             brand: request.body.brand,
             model: request.body.model,
-            // price: request.body.price,
-            // image: request.body.image,
-            // dimensions: request.body.dimensions,
-            // batteryCapacity: request.body.batteryCapacity,
-            // ram: request.body.ram,
-            // rom: request.body.rom,
-            // processor: request.body.processor,
-            // weight: request.body.weight
+            price: request.body.price,
+            image: request.body.image,
+            dimensions: request.body.dimensions,
+            batteryCapacity: request.body.batteryCapacity,
+            ram: request.body.ram,
+            rom: request.body.rom,
+            processor: request.body.processor,
+            weight: request.body.weight,
+            rearCamera: request.body.rearCamera,
+            selfieCamera: request.body.selfieCamera
         }
         const mobile = await mobiles.create(newMobile)
         return response.status(201).json(mobile)
@@ -46,14 +48,16 @@ const updateMobile = async (request, response) => {
         const updatedMobile = {
             brand: request.body.brand,
             model: request.body.model,
-            // price: request.body.price,
-            // image: request.body.image,
-            // dimensions: request.body.dimensions,
-            // batteryCapacity: request.body.batteryCapacity,
-            // ram: request.body.ram,
-            // rom: request.body.rom,
-            // processor: request.body.processor,
-            // weight: request.body.weight
+            price: request.body.price,
+            image: request.body.image,
+            dimensions: request.body.dimensions,
+            batteryCapacity: request.body.batteryCapacity,
+            ram: request.body.ram,
+            rom: request.body.rom,
+            processor: request.body.processor,
+            weight: request.body.weight,
+            rearCamera: request.body.rearCamera,
+            selfieCamera: request.body.selfieCamera
         }
         const mobile = await mobiles.findByIdAndUpdate(id, updatedMobile)
         return response.status(201).json(mobile)

@@ -16,7 +16,9 @@ export const DataProvider = ({ children }) => {
         weight: "",
         processor: "",
         batteryCapacity: "",
-        image: ""
+        image: "",
+        rearCamera: "",
+        selfieCamera: ""
     })
 
     const [file, setFile] = useState(null)

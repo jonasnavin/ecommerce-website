@@ -43,7 +43,7 @@ const ViewMobile = () => {
                         <p>Processor: {mobile.processor}</p>
                         <p>Weight: {mobile.weight}</p>
                         <p>Battery Capacity: {mobile.batteryCapacity}</p>
-                        {/* <p>Camera: {mobile.camera.rear} MP | {mobile.camera.selfie} MP</p> */}
+                        <p>Camera: {mobile.rearCamera} MP | {mobile.selfieCamera} MP</p>
                     </div>
                 </React.Fragment>
             ) : (

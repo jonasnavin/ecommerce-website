@@ -21,13 +21,8 @@ const AddMobile = () => {
       return;
     }
 
-    const fileName = formData.model
-    const brandName = formData.brand
-
     const form = new FormData()
     form.append('file', file)
-    form.append('name', fileName)
-    form.append('name', brandName)
 
     try {
       await axios.post('http://localhost:5000/upload', form, {
@@ -41,11 +36,10 @@ const AddMobile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const data = `${formData.brand}/${formData.model}`.trim().replaceAll(' ', '-').toLowerCase()
-    console.log(data)
-    const updatedFormData = { ...formData, images: data }
+    const data = file.name.trim().replaceAll(' ', '-').toLowerCase()
+    const updatedFormData = { ...formData, image: data }
     setFormData(updatedFormData)
-    handleUpload()
+    await handleUpload()
     await addData(updatedFormData)
     navigate('/')
   }
@@ -62,7 +56,9 @@ const AddMobile = () => {
       weight: "",
       processor: "",
       batteryCapacity: "",
-      image: ""
+      image: "",
+      rearCamera: "",
+      selfieCamera: ""
     })
   }, [setFormData])
 
@@ -87,7 +83,7 @@ const AddMobile = () => {
         formData={formData}
         setFormData={setFormData}
       />
-      {/* <Input
+      <Input
         id={"price"}
         name={"Price"}
         formData={formData}
@@ -128,7 +124,19 @@ const AddMobile = () => {
         name={"Dimensions"}
         formData={formData}
         setFormData={setFormData}
-      /> */}
+      />
+      <Input
+        id={"rearCamera"}
+        name={"Rear Camera"}
+        formData={formData}
+        setFormData={setFormData}
+      />
+      <Input
+        id={"selfieCamera"}
+        name={"Selfie Camera"}
+        formData={formData}
+        setFormData={setFormData}
+      />
       <button
         type='submit'
       >

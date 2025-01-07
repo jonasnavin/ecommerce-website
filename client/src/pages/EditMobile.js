@@ -26,7 +26,7 @@ const EditMobile = () => {
       }
     }
     fetchMobiles()
-  }, [id])
+  }, [id, setFormData])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -93,6 +93,18 @@ const EditMobile = () => {
       <Input
         id={"dimensions"}
         name={"Dimensions"}
+        formData={formData}
+        setFormData={setFormData}
+      />
+      <Input
+        id={"rearCamera"}
+        name={"Rear Camera"}
+        formData={formData}
+        setFormData={setFormData}
+      />
+      <Input
+        id={"selfieCamera"}
+        name={"Selfie Camera"}
         formData={formData}
         setFormData={setFormData}
       />
